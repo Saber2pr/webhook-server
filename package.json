@@ -15,8 +15,10 @@
   "scripts": {
     "lint": "prettier --write ./src",
     "prepare": "husky install",
-    "cli": "ts-node src/cli",
-    "serve": "ts-node src/server"
+    "start": "tsc -w",
+    "build": "tsc",
+    "cli": "node lib/cli",
+    "serve": "pm2 start lib/server.js"
   },
   "dependencies": {
     "@saber2pr/cli": "^0.1.4"
@@ -25,8 +27,8 @@
     "@types/node": "^16.3.3",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
+    "pm2": "^5.1.2",
     "prettier": "^2.4.1",
-    "ts-node": "^10.4.0",
     "typescript": "^4.3.5"
   },
   "lint-staged": {
