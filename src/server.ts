@@ -6,20 +6,18 @@ import { promisify } from 'util'
 const Exec = promisify(exec)
 
 const server = createServer(async (req, res) => {
-  let std: {
-    stdout: string
-    stderr: string
-  }
   try {
     const params = parseUrlParam<{ command: string; args: string }>(req.url)
     const command = params?.command || ''
     const args = params?.args || ''
-    std = await Exec(`yarn cli ${command} ${args.split(',').join(' ')}`)
+    await Exec(`yarn cli ${command} ${args.split(',').join(' ')}`, {
+      maxBuffer: 1,
+    })
 
-    res.end(JSON.stringify({ success: true, result: std }))
+    res.end(JSON.stringify({ success: true }))
   } catch (error) {
     console.log(error)
-    res.end(JSON.stringify({ success: false, result: std }))
+    res.end(JSON.stringify({ success: false }))
   }
 })
 
