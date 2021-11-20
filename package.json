@@ -15,10 +15,11 @@
   "scripts": {
     "lint": "prettier --write ./src",
     "prepare": "husky install",
-    "start": "tsc -w",
+    "dev": "tsc -w",
     "build": "tsc",
     "cli": "node lib/cli",
-    "serve": "pm2 start lib/server.js"
+    "start": "pm2 start lib/server.js",
+    "serve": "yarn build && yarn start"
   },
   "dependencies": {
     "@saber2pr/cli": "^0.1.4"
