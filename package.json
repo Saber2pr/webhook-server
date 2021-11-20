@@ -18,7 +18,7 @@
     "dev": "tsc -w",
     "build": "tsc",
     "cli": "node lib/cli",
-    "start": "pm2 start lib/server.js",
+    "start": "pm2 restart lib/server.js",
     "serve": "yarn build && yarn start"
   },
   "dependencies": {
