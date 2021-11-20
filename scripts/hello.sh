@@ -1,1 +1,1 @@
-echo hello webhook
+echo hello webhook $@
