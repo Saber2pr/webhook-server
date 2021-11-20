@@ -8,11 +8,12 @@ const Exec = promisify(exec)
 
 const server = createServer(async (req, res) => {
   try {
-    const params = parseUrlParam<{ command: string; args: string }>(req.url)
+    const params = parseUrlParam<{ command: string }>(req.url)
     const command = params?.command || ''
-    const args = params?.args || ''
+    const [script, args] = command.split(':')
+
     await Exec(
-      `sh ${join(__dirname, `../scripts/${command}.sh`)} ${args
+      `sh ${join(__dirname, `../scripts/${script}.sh`)} ${args
         .split(',')
         .join(' ')}`
     )
