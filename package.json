@@ -19,7 +19,8 @@
     "build": "tsc",
     "cli": "node lib/cli",
     "start": "pm2 restart lib/server.js",
-    "serve": "yarn build && yarn start"
+    "serve": "yarn build && yarn start",
+    "postinstall": "node lib/cli-create-uuid"
   },
   "devDependencies": {
     "@types/node": "^16.3.3",
@@ -34,5 +35,8 @@
       "yarn lint",
       "git add ."
     ]
+  },
+  "dependencies": {
+    "@saber2pr/utils": "^0.0.4"
   }
 }
