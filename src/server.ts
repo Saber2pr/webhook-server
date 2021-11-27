@@ -29,6 +29,7 @@ const server = createServer(async (req, res) => {
 
     if (token !== secret) {
       res.end('forbidden')
+      return
     }
 
     // run shell
